@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.DS_Store
+.vscode/
+.idea/
+
+# Large artefacts. Figures, tables and results.json are committed on purpose;
+# model weights are not.
+results/*.pt
