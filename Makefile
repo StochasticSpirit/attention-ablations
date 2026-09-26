@@ -4,7 +4,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	PYTHONPATH=src pytest tests/ -v
+	PYTHONPATH=src python -m pytest tests/ -v
 
 # Offline sanity check. No network, runs in well under a minute on CPU.
 smoke:
