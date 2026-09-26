@@ -118,7 +118,7 @@ def load_imdb(
     
     from datasets import load_dataset  # imported lazily; heavy and optional
 
-    dataset = load_dataset("imdb")
+    dataset = load_dataset("stanfordnlp/imdb")
     train_pool = dataset["train"].shuffle(seed=seed)
     test_pool = dataset["test"].shuffle(seed=seed)
 
