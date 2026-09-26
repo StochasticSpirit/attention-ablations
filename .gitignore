@@ -13,4 +13,7 @@ venv/
 
 # Large artefacts. Figures, tables and results.json are committed on purpose;
 # model weights are not.
-results/*.pt
+results/**/*.pt
+
+# Private note, not part of the project
+SETUP-GITHUB.md
