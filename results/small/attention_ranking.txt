@@ -1,0 +1,14 @@
+Tokens receiving the most attention (mean over heads and queries):
+
+  the                 0.0051
+  and                 0.0049
+  it                  0.0046
+  also                0.0046
+  is                  0.0045
+  but                 0.0045
+  about               0.0044
+  movie               0.0044
+  abusive             0.0044
+  on                  0.0043
+  hadnt               0.0043
+  why                 0.0042

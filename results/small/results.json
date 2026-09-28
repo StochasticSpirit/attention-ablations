@@ -1,0 +1,383 @@
+{
+  "config": {
+    "d_model": 128,
+    "num_heads": 4,
+    "d_ff": 256,
+    "num_layers": 2,
+    "num_classes": 2,
+    "dropout": 0.1,
+    "max_len": 256,
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "patience": 5,
+    "device": "auto",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "synthetic": false
+  },
+  "baselines": [
+    {
+      "name": "majority class",
+      "test_acc": 0.508,
+      "val_acc": 0.5,
+      "train_acc": 0.512,
+      "n_params": 1
+    },
+    {
+      "name": "tf-idf + multinomial NB",
+      "test_acc": 0.676,
+      "val_acc": 0.7,
+      "train_acc": 0.945,
+      "n_params": 1
+    },
+    {
+      "name": "tf-idf + logistic regression",
+      "test_acc": 0.766,
+      "val_acc": 0.8,
+      "train_acc": 0.978,
+      "n_params": 19553
+    },
+    {
+      "name": "tf-idf bigrams + logistic regression",
+      "test_acc": 0.758,
+      "val_acc": 0.796,
+      "train_acc": 0.993,
+      "n_params": 39157
+    }
+  ],
+  "ablations": [
+    {
+      "name": "full model",
+      "question": "Reference configuration that everything else is measured against.",
+      "overrides": {},
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.73,
+        0.718,
+        0.718
+      ],
+      "val_accs": [
+        0.74,
+        0.742,
+        0.742
+      ],
+      "train_accs": [
+        0.983,
+        0.998,
+        0.951
+      ],
+      "best_epochs": [
+        14,
+        16,
+        9
+      ],
+      "n_params": 2771458
+    },
+    {
+      "name": "no positional encoding",
+      "question": "Does word order carry signal here, or is sentiment mostly a bag of words? If accuracy barely moves, the model is not using order.",
+      "overrides": {
+        "use_positional_encoding": false
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.72,
+        0.688,
+        0.718
+      ],
+      "val_accs": [
+        0.74,
+        0.716,
+        0.716
+      ],
+      "train_accs": [
+        0.995,
+        0.895,
+        0.949
+      ],
+      "best_epochs": [
+        18,
+        6,
+        9
+      ],
+      "n_params": 2771458
+    },
+    {
+      "name": "single head",
+      "question": "Do multiple attention heads help at this scale, or is one wide head of equal capacity enough?",
+      "overrides": {
+        "num_heads": 1
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.712,
+        0.674,
+        0.656
+      ],
+      "val_accs": [
+        0.746,
+        0.708,
+        0.714
+      ],
+      "train_accs": [
+        0.943,
+        0.958,
+        0.913
+      ],
+      "best_epochs": [
+        13,
+        13,
+        11
+      ],
+      "n_params": 2771458
+    },
+    {
+      "name": "no feed-forward network",
+      "question": "How much of the model's capacity sits in the FFN rather than attention?",
+      "overrides": {
+        "use_ffn": false
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.712,
+        0.718,
+        0.746
+      ],
+      "val_accs": [
+        0.734,
+        0.736,
+        0.758
+      ],
+      "train_accs": [
+        0.99,
+        0.961,
+        0.991
+      ],
+      "best_epochs": [
+        14,
+        9,
+        15
+      ],
+      "n_params": 2639618
+    },
+    {
+      "name": "no residual connections",
+      "question": "Do residuals matter at 2 layers, or only once the stack is deep?",
+      "overrides": {
+        "use_residual": false
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.714,
+        0.704,
+        0.71
+      ],
+      "val_accs": [
+        0.746,
+        0.73,
+        0.694
+      ],
+      "train_accs": [
+        0.974,
+        0.952,
+        0.906
+      ],
+      "best_epochs": [
+        13,
+        9,
+        7
+      ],
+      "n_params": 2771458
+    },
+    {
+      "name": "no layer norm",
+      "question": "Does training stay stable without normalisation at this depth?",
+      "overrides": {
+        "use_layernorm": false
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.7,
+        0.73,
+        0.72
+      ],
+      "val_accs": [
+        0.718,
+        0.74,
+        0.728
+      ],
+      "train_accs": [
+        0.899,
+        0.969,
+        0.95
+      ],
+      "best_epochs": [
+        8,
+        16,
+        14
+      ],
+      "n_params": 2770434
+    },
+    {
+      "name": "unmasked mean pooling",
+      "question": " How much accuracy does averaging over padded positions actually cost?",
+      "overrides": {
+        "pooling": "mean"
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.708,
+        0.736,
+        0.696
+      ],
+      "val_accs": [
+        0.738,
+        0.718,
+        0.71
+      ],
+      "train_accs": [
+        0.997,
+        1.0,
+        0.898
+      ],
+      "best_epochs": [
+        14,
+        15,
+        6
+      ],
+      "n_params": 2771458
+    },
+    {
+      "name": "pre-layer-norm",
+      "question": "Is pre-LN better behaved than the paper's post-LN at this scale?",
+      "overrides": {
+        "norm_first": true
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.744,
+        0.73,
+        0.73
+      ],
+      "val_accs": [
+        0.734,
+        0.752,
+        0.738
+      ],
+      "train_accs": [
+        0.977,
+        0.932,
+        0.979
+      ],
+      "best_epochs": [
+        17,
+        12,
+        16
+      ],
+      "n_params": 2771714
+    },
+    {
+      "name": "1 layer",
+      "question": "Does a second encoder block pay for itself?",
+      "overrides": {
+        "num_layers": 1
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.708,
+        0.688,
+        0.7
+      ],
+      "val_accs": [
+        0.732,
+        0.748,
+        0.758
+      ],
+      "train_accs": [
+        0.868,
+        0.992,
+        0.995
+      ],
+      "best_epochs": [
+        7,
+        18,
+        20
+      ],
+      "n_params": 2638978
+    },
+    {
+      "name": "4 layers",
+      "question": "Does more depth help, or does it overfit faster on limited data?",
+      "overrides": {
+        "num_layers": 4
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "test_accs": [
+        0.714,
+        0.698,
+        0.722
+      ],
+      "val_accs": [
+        0.76,
+        0.71,
+        0.74
+      ],
+      "train_accs": [
+        0.996,
+        0.924,
+        0.979
+      ],
+      "best_epochs": [
+        18,
+        6,
+        14
+      ],
+      "n_params": 3036418
+    }
+  ]
+}

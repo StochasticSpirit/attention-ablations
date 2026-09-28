@@ -1,0 +1,159 @@
+{
+  "config": {
+    "d_model": 128,
+    "num_heads": 4,
+    "d_ff": 256,
+    "num_layers": 2,
+    "num_classes": 2,
+    "dropout": 0.1,
+    "max_len": 256,
+    "epochs": 30,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "patience": 5,
+    "device": "cuda",
+    "batch_size": 64,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      5000,
+      10000,
+      20000
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ]
+  },
+  "crossover_n_train": null,
+  "points": [
+    {
+      "n_train": 500,
+      "vocab_size": 12588,
+      "transformer_test": [
+        0.67408,
+        0.6798,
+        0.68572
+      ],
+      "transformer_train": [
+        0.964,
+        0.988,
+        0.998
+      ],
+      "baselines": {
+        "majority class": 0.5,
+        "tf-idf + multinomial NB": 0.5938,
+        "tf-idf + logistic regression": 0.75712,
+        "tf-idf bigrams + logistic regression": 0.74312
+      },
+      "n_params": 1876482
+    },
+    {
+      "n_train": 1000,
+      "vocab_size": 19379,
+      "transformer_test": [
+        0.709,
+        0.69988,
+        0.71612
+      ],
+      "transformer_train": [
+        0.987,
+        0.988,
+        0.983
+      ],
+      "baselines": {
+        "majority class": 0.5,
+        "tf-idf + multinomial NB": 0.82104,
+        "tf-idf + logistic regression": 0.81304,
+        "tf-idf bigrams + logistic regression": 0.80968
+      },
+      "n_params": 2745730
+    },
+    {
+      "n_train": 2000,
+      "vocab_size": 20002,
+      "transformer_test": [
+        0.7438,
+        0.73528,
+        0.73948
+      ],
+      "transformer_train": [
+        0.984,
+        0.9185,
+        0.967
+      ],
+      "baselines": {
+        "majority class": 0.5,
+        "tf-idf + multinomial NB": 0.79516,
+        "tf-idf + logistic regression": 0.8334,
+        "tf-idf bigrams + logistic regression": 0.8336
+      },
+      "n_params": 2825474
+    },
+    {
+      "n_train": 5000,
+      "vocab_size": 20002,
+      "transformer_test": [
+        0.79248,
+        0.7844,
+        0.78532
+      ],
+      "transformer_train": [
+        0.9652,
+        0.924,
+        0.9094
+      ],
+      "baselines": {
+        "majority class": 0.5,
+        "tf-idf + multinomial NB": 0.82628,
+        "tf-idf + logistic regression": 0.85536,
+        "tf-idf bigrams + logistic regression": 0.85996
+      },
+      "n_params": 2825474
+    },
+    {
+      "n_train": 10000,
+      "vocab_size": 20002,
+      "transformer_test": [
+        0.82352,
+        0.81808,
+        0.82152
+      ],
+      "transformer_train": [
+        0.9566,
+        0.9645,
+        0.948
+      ],
+      "baselines": {
+        "majority class": 0.5,
+        "tf-idf + multinomial NB": 0.82732,
+        "tf-idf + logistic regression": 0.87044,
+        "tf-idf bigrams + logistic regression": 0.87756
+      },
+      "n_params": 2825474
+    },
+    {
+      "n_train": 20000,
+      "vocab_size": 20002,
+      "transformer_test": [
+        0.83724,
+        0.83464,
+        0.84164
+      ],
+      "transformer_train": [
+        0.9324,
+        0.924,
+        0.9304
+      ],
+      "baselines": {
+        "majority class": 0.5,
+        "tf-idf + multinomial NB": 0.83328,
+        "tf-idf + logistic regression": 0.8824,
+        "tf-idf bigrams + logistic regression": 0.89224
+      },
+      "n_params": 2825474
+    }
+  ]
+}

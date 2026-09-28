@@ -1,0 +1,14 @@
+Tokens receiving the most attention (mean over heads and queries):
+
+  oh                  0.0150
+  cover               0.0150
+  entertaining        0.0135
+  also                0.0134
+  fighting            0.0129
+  then                0.0122
+  involved            0.0097
+  go                  0.0095
+  myself              0.0087
+  quickly             0.0084
+  others              0.0081
+  effect              0.0078
